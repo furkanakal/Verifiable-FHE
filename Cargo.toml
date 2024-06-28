@@ -7,4 +7,14 @@ edition = "2021"
 
 [dependencies]
 plonky2 = "0.2.2"
+num-bigint = { version = "0.4", features = ["rand"] }
+num-traits = "0.2"
 anyhow = "1.0"
+
+[[bin]]
+name = "main"
+path = "src/main.rs"
+
+[[bin]]
+name = "lwe_decrypt"
+path = "src/bin/lwe_decrypt.rs"

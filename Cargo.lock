@@ -588,5 +588,7 @@ name = "zkLWE"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "num-bigint",
+ "num-traits",
  "plonky2",
 ]
