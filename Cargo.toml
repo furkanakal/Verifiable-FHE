@@ -10,6 +10,7 @@ plonky2 = "0.2.2"
 num-bigint = { version = "0.4", features = ["rand"] }
 num-traits = "0.2"
 anyhow = "1.0"
+rand = "0.8"
 
 [[bin]]
 name = "main"

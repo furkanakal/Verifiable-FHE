@@ -1,26 +1,26 @@
 use anyhow::Result;
-
 use plonky2::field::types::Field;
 use plonky2::iop::witness::{PartialWitness, WitnessWrite};
 use plonky2::plonk::circuit_builder::CircuitBuilder;
 use plonky2::plonk::circuit_data::CircuitConfig;
 use plonky2::plonk::config::{GenericConfig, PoseidonGoldilocksConfig};
+use rand::random;
 
 fn main() -> Result<()> {
     const D: usize = 2;
     type C = PoseidonGoldilocksConfig;
     type F = <C as GenericConfig<D>>::F;
 
-    // Define parameters for the LWE encryption
-    let secret_key: [F; 3] = [F::from_canonical_u64(1), F::from_canonical_u64(0), F::from_canonical_u64(1)];
+    // Generate random secret_key, a1, and a2 vectors
+    let secret_key: [F; 3] = [F::from_canonical_u64(random::<u64>()), F::from_canonical_u64(random::<u64>()), F::from_canonical_u64(random::<u64>())];
+    let a1: [F; 3] = [F::from_canonical_u64(random::<u64>()), F::from_canonical_u64(random::<u64>()), F::from_canonical_u64(random::<u64>())];
+    let a2: [F; 3] = [F::from_canonical_u64(random::<u64>()), F::from_canonical_u64(random::<u64>()), F::from_canonical_u64(random::<u64>())];
+
     let m1 = F::from_canonical_u64(1); // Encrypt bit 1
     let m2 = F::from_canonical_u64(0); // Encrypt bit 0
     let e1 = F::from_canonical_u64(38);
     let e2 = F::from_canonical_u64(133);
 
-    // Encrypt the plaintexts
-    let a1: [F; 3] = [F::from_canonical_u64(2), F::from_canonical_u64(3), F::from_canonical_u64(4)];
-    let a2: [F; 3] = [F::from_canonical_u64(5), F::from_canonical_u64(6), F::from_canonical_u64(7)];
     let q = F::from_canonical_u64(18446744069414584320);
     let q_half = q / F::TWO;
     let b1 = inner_product(&a1, &secret_key) + e1 + m1 * q_half;
