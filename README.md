@@ -1,10 +1,12 @@
-# zkLWE
+# Verifiable FHE
 
-Plonky2 implementation to prove a homomorphic LWE addition
+Implementation to ZK prove homomorphic computations.
 
-## Usage
+## LWE
 
-### Running the Main Application
+### Usage
+
+#### Running the Main Application
 
 To run the main application (`main.rs`), use the following command:
 
@@ -12,7 +14,7 @@ To run the main application (`main.rs`), use the following command:
 cargo run
 ```
 
-### Running the LWE Decryption Binary
+#### Running the LWE Decryption Binary
 
 To run the LWE decryption binary (`lwe_decrypt.rs`), use the following command:
 
@@ -20,7 +22,7 @@ To run the LWE decryption binary (`lwe_decrypt.rs`), use the following command:
 cargo run --bin lwe_decrypt
 ```
 
-## Dependencies
+### Dependencies
 
 This project uses the following dependencies:
 
